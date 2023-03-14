@@ -54,11 +54,11 @@ export default class Titlebar {
         document.body.insertAdjacentElement('afterbegin', titlebar)
 
         this.start = document.createElement('div');
-        this.start.className = `${this.options.className}-section`
+        this.start.className = this.subclass('section')
         this.middle = document.createElement('div');
-        this.middle.className = `${this.options.className}-section`
+        this.middle.className = this.subclass('section')
         this.end = document.createElement('div');
-        this.end.className = `${this.options.className}-section`
+        this.end.className = this.subclass('section')
         this.slots = {
             start: this.start,
             middle: this.middle,
@@ -69,9 +69,13 @@ export default class Titlebar {
         titlebar.insertAdjacentElement('afterbegin', this.start)
     }
 
+    private subclass(name: string) {
+        return `${this.options.className}-${name}`;
+    }
+
     addIcon(inner: InnerData, position: Position = 'start') {
         const div = document.createElement('div');
-        div.className = `${this.options.className}-icon`;
+        div.className = this.subclass('icon');
 
         if (inner.type === 'src') {
             const icon = document.createElement('img');
@@ -91,7 +95,7 @@ export default class Titlebar {
     addButton(id: string, inner: InnerData, onClick: (e: MouseEvent) => void, position: Position = 'end') {
         const button = document.createElement('div');
         button.id = id;
-        button.className = `${this.options.className}-button`;
+        button.className = this.subclass('button');
         button.addEventListener('click', onClick);
         if (inner.type === 'src') {
             const icon = document.createElement('img');
