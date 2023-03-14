@@ -9,22 +9,17 @@ Hassle-free custom titlebars for any Tauri application.
 ```
 
 # Configuration
-Inside of *tauri.conf.json*
-```json
+Inside of *tauri.conf.json*, make sure the following properties are set:
+```yaml
 "tauri": {
     "allowList": {
-        ...
         "window": {
-            "all": false,
-            "startDragging": true,
-            ...
+            "startDragging": true, # if "window.all" is false
         }
     }
-    ...
     "windows": [
         {
             "decorations": false,
-            ...
         }
     ]
 }
