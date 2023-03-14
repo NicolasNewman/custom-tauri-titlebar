@@ -16,7 +16,7 @@ importers:
 
   packages/custom-tauri-titlebar:
     specifiers:
-      eslint-config-custom-tauri-titlebar: ^0.0.1
+      eslint-config-custom-tauri-titlebar: '*'
       nodemon: ^2.0.21
       typescript: ^4.9.5
     devDependencies:
@@ -49,8 +49,8 @@ importers:
   packages/sample:
     specifiers:
       clean-webpack-plugin: ^4.0.0
-      custom-tauri-titlebar: ^0.0.1
-      eslint-config-custom-tauri-titlebar: ^0.0.1
+      custom-tauri-titlebar: '*'
+      eslint-config-custom-tauri-titlebar: '*'
       html-webpack-plugin: ^5.5.0
       webpack: ^5.76.1
       webpack-cli: ^5.0.1
