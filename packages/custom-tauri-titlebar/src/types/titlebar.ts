@@ -10,8 +10,8 @@ export interface TitleBarOptions {
 export const TitleBarOptionsDefault: TitleBarOptions = {
 	className: 'titlebar',
 	height: 30,
-	color: '#000',
-	background: '#fff',
+	color: '#000000',
+	background: '#ffffff',
 };
 
 export type InnerData =
