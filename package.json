@@ -1,26 +1,26 @@
 {
-  "name": "custom-tauri-titlebar-monorepo",
-  "version": "0.0.1",
-  "private": "true",
-  "packageManager": "pnpm@7.29.1",
-  "description": "",
-  "scripts": {
-    "lint": "lerna run lint",
-    "dev": "lerna run dev --parallel",
-    "lint:fix": "lerna run lint:fix",
-    "prepare": "husky install"
-  },
-  "keywords": [],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NicolasNewman/custom-tauri-titlebar.git"
-  },
-  "author": "Nicolas Newman",
-  "license": "MIT",
-  "devDependencies": {
-    "@commitlint/cli": "^17.4.4",
-    "@commitlint/config-conventional": "^17.4.4",
-    "husky": "^8.0.0",
-    "lerna": "^6.5.1"
-  }
+	"name": "custom-tauri-titlebar-monorepo",
+	"version": "0.0.0",
+	"private": "true",
+	"packageManager": "pnpm@7.29.1",
+	"description": "",
+	"scripts": {
+		"lint": "lerna run lint",
+		"dev": "lerna run dev --parallel",
+		"lint:fix": "lerna run lint:fix",
+		"prepare": "husky install"
+	},
+	"keywords": [],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NicolasNewman/custom-tauri-titlebar.git"
+	},
+	"author": "Nicolas Newman",
+	"license": "MIT",
+	"devDependencies": {
+		"@commitlint/cli": "^17.4.4",
+		"@commitlint/config-conventional": "^17.4.4",
+		"husky": "^8.0.0",
+		"lerna": "^6.5.1"
+	}
 }

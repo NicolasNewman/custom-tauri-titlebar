@@ -1,31 +1,31 @@
 {
-  "name": "custom-tauri-titlebar",
-  "version": "0.0.1",
-  "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "dev": "nodemon -x \"pnpm build && pnpm i\" -w src -e ts,js",
-    "prepare": "npm run build",
-    "lint": "eslint --ext .ts src/",
-    "lint:fix": "eslint --ext .ts src/ --fix"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NicolasNewman/custom-tauri-titlebar.git"
-  },
-  "keywords": [],
-  "author": "Nicolas Newman",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint-config-custom-tauri-titlebar": "^0.0.1",
-    "nodemon": "^2.0.21",
-    "typescript": "^4.9.5"
-  },
-  "gitHead": "6cd6680f726df572868618b1a57d8a26476a477c"
+	"name": "custom-tauri-titlebar",
+	"version": "0.0.0",
+	"description": "",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist",
+		"README.md"
+	],
+	"scripts": {
+		"build": "tsc",
+		"dev": "nodemon -x \"pnpm build && pnpm i\" -w src -e ts,js",
+		"prepare": "npm run build",
+		"lint": "eslint --ext .ts src/",
+		"lint:fix": "eslint --ext .ts src/ --fix"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NicolasNewman/custom-tauri-titlebar.git"
+	},
+	"keywords": [],
+	"author": "Nicolas Newman",
+	"license": "MIT",
+	"devDependencies": {
+		"eslint-config-custom-tauri-titlebar": "*",
+		"nodemon": "^2.0.21",
+		"typescript": "^4.9.5"
+	},
+	"gitHead": "6cd6680f726df572868618b1a57d8a26476a477c"
 }
