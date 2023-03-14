@@ -1,14 +1,16 @@
 # custom-tauri-titlebar
 
+**THIS PACKAGE IS CURRENTLY IN ALPHA DEVELOPMENT**
+
 Hassle-free custom titlebars for any Tauri application.
 
-# Instalation
+## Instalation
 
 ```sh
-# TODO
+npm i custom-tauri-titlebar
 ```
 
-# Setup
+## Setup
 
 Inside of _tauri.conf.json_, make sure the following properties are set:
 
@@ -27,7 +29,7 @@ Inside of _tauri.conf.json_, make sure the following properties are set:
 }
 ```
 
-# Usage
+## Usage
 
 ```ts
 import Titlebar from 'custom-tauri-titlebar';
@@ -38,7 +40,7 @@ titlebar.addIcon({ type: 'src', data: 'https://api.iconify.design/ph:globe-hemis
 titlebar.addButton('btn-close', { type: 'html', data: '<p>X</p>' }, () => {});
 ```
 
-# Styling
+## Styling
 
 Default styles are inserted into the head when the Titlebar constructor is invoked. If customization is needed, these styles can be extended upon through your own stylesheets. The class name of the Titlebar container is as provided by the `className` field to the constructor. If no class name was given, then the default of `titlebar` is used.
 
@@ -55,4 +57,4 @@ Assuming the default class name is used, the following class names can be used t
 }
 ```
 
-If a higher specificity is needed to overwrite default properties, then the selector `.{className} .{className}-{component}` can be used.
+If a higher specificity is needed to overwrite default properties, the selector `.{className} .{className}-{component}` can be used.
