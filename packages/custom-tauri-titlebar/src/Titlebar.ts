@@ -28,6 +28,7 @@ export default class Titlebar {
 
         .${this.options.className}-section {
             display: flex;
+            align-items: center;
         }
 
         .${this.options.className}-button {
@@ -90,6 +91,13 @@ export default class Titlebar {
         }
 
         this.slots[position].insertAdjacentElement('beforeend', div);
+    }
+
+    addTitle(text: string, position: Position = 'middle') {
+        const div = document.createElement('div');
+        div.className = this.subclass('title');
+        div.textContent = text;
+        this.slots[position].insertAdjacentElement('beforeend', div)
     }
 
     addButton(id: string, inner: InnerData, onClick: (e: MouseEvent) => void, position: Position = 'end') {
