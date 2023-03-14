@@ -1,0 +1,34 @@
+name: Publish release
+on:
+  release:
+    types: [published]
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        node-version: [15]
+    steps:
+    - uses: actions/checkout@v3
+    - uses: fregante/setup-git-user@v1
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 7
+    - name: Use Node.js v18
+      uses: actions/setup-node@v3
+      with:
+        cache: pnpm
+        node-version: 18.x
+    - name: Install dependencies
+      run: pnpm install
+    - name: Publish
+      run: |
+          VERSION=${GITHUB_REF:10}
+          echo "Publishing release $VERSION"
+          git fetch --all
+          git checkout -t origin/master
+          cp README.md packages/custom-tauri-titlebar/dist/README.md
+          npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
+          lerna publish $VERSION --yes
+      env:
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
