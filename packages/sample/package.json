@@ -1,6 +1,6 @@
 {
 	"name": "sample",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "",
 	"main": "index.js",
 	"private": true,
@@ -14,11 +14,11 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"custom-tauri-titlebar": "*"
+		"custom-tauri-titlebar": "^0.0.1"
 	},
 	"devDependencies": {
 		"clean-webpack-plugin": "^4.0.0",
-		"eslint-config-custom-tauri-titlebar": "*",
+		"eslint-config-custom-tauri-titlebar": "^0.0.1",
 		"html-webpack-plugin": "^5.5.0",
 		"webpack": "^5.76.1",
 		"webpack-cli": "^5.0.1",

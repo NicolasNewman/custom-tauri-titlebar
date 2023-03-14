@@ -1,6 +1,6 @@
 {
 	"name": "custom-tauri-titlebar",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -23,7 +23,7 @@
 	"author": "Nicolas Newman",
 	"license": "MIT",
 	"devDependencies": {
-		"eslint-config-custom-tauri-titlebar": "*",
+		"eslint-config-custom-tauri-titlebar": "^0.0.1",
 		"nodemon": "^2.0.21",
 		"typescript": "^4.9.5"
 	},
