@@ -147,6 +147,10 @@ export default class Titlebar {
 	 * - "html" inserts html as a string into the button.
 	 * @param onClick - Event handler for when the button is clicked.
 	 * @param {Position} [position=end] - Position to insert the button at. Defaults to "end" if unspecified.
+	 * @example
+	 * // add a button with id 'close-button' at the default position which prints to the console when clicked
+	 * titlebar.addButton('close-button', { type: 'src', data: 'https://api.iconify.design/mdi:close.svg' }, () => console.log('close!'));
+);
 	 */
 	addButton(id: string, inner: InnerData, onClick: (e: MouseEvent) => void, position: Position = 'end') {
 		const button = document.createElement('div');
