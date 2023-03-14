@@ -8,6 +8,16 @@ export default class Titlebar {
 	private end: Element;
 	private slots: { [key in Position]: Element };
 
+	/**
+	 * Constructor to handle initialization of the Titlebar. This includes insertion of the Titlebar to the begining of the \<body \/\> and the styles at the end of the \<head\/\>
+	 *
+	 * @constructor
+	 * @param _options - Object containing customization settings for the titlebar
+	 * @param {string} [_options.className=titlebar] - The class name of the Titlebar container and the prefix used for all subclasses. If no class name is specified, "titlebar" is used as the default. If a custom class name is given, ensure you are using the given name when adding your own styles targeting subclasses.
+	 * @param {number} [_options.height=30] - The height of the titlebar, in pixels.
+	 * @param {string} [_options.color=#000000] - The color of all text in the titlebar. Must be given as a 6 digit hexidecimal code (3 digit codes are unsupported by the lighten function).
+	 * @param {string} [_options.background=#ffffff] - The background color of the titlebar. Must be given as a 6 digit hexidecimal code.
+	 */
 	constructor(_options: Partial<TitleBarOptions>) {
 		this.options = { ...TitleBarOptionsDefault, ..._options };
 
@@ -76,6 +86,22 @@ export default class Titlebar {
 		return `${this.options.className}-${name}`;
 	}
 
+	/**
+	 * Insert a div containing an icon into the titlebar
+	 *
+	 * @param inner - Object containing the div's inner data and the method of insertion.
+	 * @param inner.type - Method of insertion into the titlebar.
+	 * - "src" creates an \<img \/\> with its source set to inner.data.
+	 * - "element" inserts a user-defined Element into the div.
+	 * - "html" inserts html as a string into the div.
+	 * @param {Position} [position=start] - Position to insert the icon at. Defaults to "start" if unspecified.
+	 * @example
+	 * // insert an icon as an img element with src='../icon.svg' at the default position
+	 * titlebar.addIcon({type: 'src', data: '../icon.svg'})
+	 * @example
+	 * // insert an icon as a fa-icon provided as an html string at the end position
+	 * titlebar.addIcon({type: 'html', data: '<i class="fa-solid fa-globe"></i>'}, 'end')
+	 */
 	addIcon(inner: InnerData, position: Position = 'start') {
 		const div = document.createElement('div');
 		div.className = this.subclass('icon');
@@ -95,6 +121,15 @@ export default class Titlebar {
 		this.slots[position].insertAdjacentElement('beforeend', div);
 	}
 
+	/**
+	 * Insert a div containing a title into the titlebar.
+	 *
+	 * @param text - Text to insert into the titlebar.
+	 * @param {Position} [position=middle] - Position to insert the icon at. Defaults to "middle" if unspecified.
+	 * @example
+	 * // insert the title 'Hello, world!' at the default position
+	 * titlebar.addTitle('Hello, world!')
+	 */
 	addTitle(text: string, position: Position = 'middle') {
 		const div = document.createElement('div');
 		div.className = this.subclass('title');
@@ -102,6 +137,17 @@ export default class Titlebar {
 		this.slots[position].insertAdjacentElement('beforeend', div);
 	}
 
+	/**
+	 * Insert a button into the titlebar
+	 * @param id - id to be assigned to the element
+	 * @param inner - Object containing the button's inner data and the method of insertion.
+	 * @param inner.type - Method of insertion into the titlebar.
+	 * - "src" creates an \<img \/\> with its source set to inner.data.
+	 * - "element" inserts a user-defined Element into the button.
+	 * - "html" inserts html as a string into the button.
+	 * @param onClick - Event handler for when the button is clicked.
+	 * @param {Position} [position=end] - Position to insert the button at. Defaults to "end" if unspecified.
+	 */
 	addButton(id: string, inner: InnerData, onClick: (e: MouseEvent) => void, position: Position = 'end') {
 		const button = document.createElement('div');
 		button.id = id;
