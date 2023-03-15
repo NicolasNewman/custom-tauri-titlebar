@@ -1,0 +1,5 @@
+:root,
+[data-bs-theme="light"] {
+  // Note: Custom variable values only support SassScript inside `#{}`.
+  --#{$prefix}border-color-translucent: #{$border-color-translucent};
+}

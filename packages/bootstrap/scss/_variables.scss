@@ -303,6 +303,7 @@ $theme-colors: (
 ) !default;
 // scss-docs-end theme-colors-map
 
+
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -348,15 +349,15 @@ $spacers: (
 //
 // Settings for the `<body>` element.
 
+
 $body-color: $gray-900 !default;
 
 // Links
 //
 // Style anchor elements.
 
-$link-decoration: underline !default;
-$link-hover-decoration: null !default;
-
+$link-decoration:                         underline !default;
+$link-hover-decoration:                   null !default;
 
 // Grid breakpoints
 //
@@ -381,13 +382,23 @@ $grid-breakpoints: (
 
 // scss-docs-start border-variables
 $border-width: 1px !default;
+$border-color-translucent:    rgba($black, .175) !default;
 // scss-docs-end border-variables
 
 // scss-docs-start border-radius-variables
-$border-radius: .375rem !default;
-$border-radius-sm: .25rem !default;
-$border-radius-lg: .5rem !default;
+$border-radius:               .375rem !default;
+$border-radius-sm:            .25rem !default;
+$border-radius-lg:            .5rem !default;
+$border-radius-xxl:           2rem !default;
 // scss-docs-end border-radius-variables
+// fusv-disable
+$border-radius-2xl:           $border-radius-xxl !default; // Deprecated in v5.3.0
+// fusv-enable
+
+
+// scss-docs-start box-shadow-variables
+$box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
+// scss-docs-end box-shadow-variables
 
 // scss-docs-start box-shadow-variables
 $box-shadow: 0 .5rem 1rem rgba($black, .15) !default;
@@ -422,7 +433,8 @@ $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-sm: $font-size-base * .875 !default;
 $font-size-lg: $font-size-base * 1.25 !default;
 
-$font-weight-normal: 400 !default;
+
+$font-weight-normal:          400 !default;
 
 $line-height-base: 1.5 !default;
 

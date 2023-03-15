@@ -174,7 +174,7 @@
 // `<button>`-specific styles are denoted with `// For <button>s`
 .dropdown-item {
   display: block;
-  width: 100%; // For `<button>`s
+  // width: 100%; // For `<button>`s
   padding: var(--#{$prefix}dropdown-item-padding-y) var(--#{$prefix}dropdown-item-padding-x);
   clear: both;
   font-weight: $font-weight-normal;
