@@ -14,11 +14,11 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"custom-tauri-titlebar": "^0.0.1"
+		"custom-tauri-titlebar": "workspace:*"
 	},
 	"devDependencies": {
 		"clean-webpack-plugin": "^4.0.0",
-		"eslint-config-custom-tauri-titlebar": "^0.0.1",
+		"eslint-config-custom-tauri-titlebar": "workspace:*",
 		"html-webpack-plugin": "^5.5.0",
 		"webpack": "^5.76.1",
 		"webpack-cli": "^5.0.1",
