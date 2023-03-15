@@ -1,6 +1,10 @@
 {
-    "editor.formatOnSave": true,
-    "javascript.format.enable": true,
+	"editor.formatOnSave": true,
+	"javascript.format.enable": true,
 	"typescript.format.enable": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"stylelint.validate": ["css", "less", "postcss", "scss"],
+	"[scss]": {
+		"editor.defaultFormatter": "stylelint.vscode-stylelint"
+	}
 }
