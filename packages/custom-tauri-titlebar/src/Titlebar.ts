@@ -1,5 +1,8 @@
 import { InnerData, Position, TitleBarOptions, TitleBarOptionsDefault } from './types/titlebar';
-import { lighten } from './lib/color';
+import { Menu } from './types/menu';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { styleGen } from './lib/styleGen';
 
 export default class Titlebar {
 	private options: TitleBarOptions;
@@ -15,52 +18,12 @@ export default class Titlebar {
 	 * @param _options - Object containing customization settings for the titlebar
 	 * @param {string} [_options.className=titlebar] - The class name of the Titlebar container and the prefix used for all subclasses. If no class name is specified, "titlebar" is used as the default. If a custom class name is given, ensure you are using the given name when adding your own styles targeting subclasses.
 	 * @param {number} [_options.height=30] - The height of the titlebar, in pixels.
-	 * @param {string} [_options.color=#000000] - The color of all text in the titlebar. Must be given as a 6 digit hexidecimal code (3 digit codes are unsupported by the lighten function).
-	 * @param {string} [_options.background=#ffffff] - The background color of the titlebar. Must be given as a 6 digit hexidecimal code.
+	 * @param {string} [_options.theme] - Theme colors for the titlebar. Primary is used for the titlebar and secondary is used for the menu dropdowns. Please ensure that the provided colors are 6-digit hexidecimal codes.
 	 */
 	constructor(_options: Partial<TitleBarOptions>) {
 		this.options = { ...TitleBarOptionsDefault, ..._options };
 
-		document.head.insertAdjacentHTML(
-			'beforeend',
-			`<style>
-	.${this.options.className} {
-		height: ${this.options.height}px;
-		background: ${this.options.background};
-		color: ${this.options.color};
-		user-select: none;
-		display: flex;
-		justify-content: space-between;
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-	}
-
-	.${this.options.className}-section {
-		display: flex;
-		align-items: center;
-	}
-
-	.${this.options.className}-button {
-		display: inline-flex;
-		justify-content: center;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		width: ${this.options.height}px;
-		height: ${this.options.height}px;
-	}
-
-	.${this.options.className}-button:hover {
-		background: ${lighten(this.options.background, -0.1)};
-	}
-	
-	.${this.options.className}-button:active {
-		background: ${lighten(this.options.background, 0.1)};
-	}
-</style>`,
-		);
+		document.head.insertAdjacentHTML('beforeend', styleGen(this.options));
 
 		const titlebar = document.createElement('div');
 		titlebar.className = this.options.className;
@@ -84,6 +47,44 @@ export default class Titlebar {
 
 	private subclass(name: string) {
 		return `${this.options.className}-${name}`;
+	}
+
+	addMenu(menu: Menu, position: Position = 'start') {
+		// const container = document.createElement('div');
+		// container.className = 'dropdown-container';
+
+		const dropdown = document.createElement('div');
+		dropdown.className = 'dropdown';
+
+		const button = document.createElement('div');
+		button.className = this.subclass('menu');
+		// button.type = 'button';
+		button.setAttribute('data-bs-toggle', 'dropdown');
+		button.setAttribute('aria-expanded', 'false');
+		button.innerText = menu.label;
+
+		const ul = document.createElement('ul');
+		ul.className = 'dropdown-menu';
+
+		for (const item of menu.items) {
+			const li = document.createElement('li');
+			if (item.type === 'item') {
+				const a = document.createElement('a');
+				a.className = 'dropdown-item';
+				a.innerText = item.label;
+				li.insertAdjacentElement('afterbegin', a);
+			} else if (item.type === 'divider') {
+				const hr = document.createElement('hr');
+				hr.className = 'dropdown-divider';
+				li.insertAdjacentElement('afterbegin', hr);
+			}
+			ul.insertAdjacentElement('beforeend', li);
+		}
+
+		dropdown.insertAdjacentElement('afterbegin', button);
+		dropdown.insertAdjacentElement('beforeend', ul);
+
+		this.slots[position].insertAdjacentElement('beforeend', dropdown);
 	}
 
 	/**

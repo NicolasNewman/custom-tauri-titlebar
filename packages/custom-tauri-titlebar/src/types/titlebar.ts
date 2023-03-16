@@ -3,15 +3,25 @@ export type Position = 'start' | 'middle' | 'end';
 export interface TitleBarOptions {
 	className: string;
 	height: number;
-	background: string;
-	color: string;
+	theme: Theme;
+}
+
+export interface Theme {
+	bgPrimary: string;
+	bgSecondary: string;
+	fontPrimary: string;
+	fontSecondary: string;
 }
 
 export const TitleBarOptionsDefault: TitleBarOptions = {
 	className: 'titlebar',
 	height: 30,
-	color: '#000000',
-	background: '#ffffff',
+	theme: {
+		bgPrimary: '#c0c0c0',
+		bgSecondary: '#fffffff',
+		fontPrimary: '#191919',
+		fontSecondary: '#000000',
+	},
 };
 
 export type InnerData =
