@@ -125,6 +125,7 @@
   }
 }
 
+
 .dropend {
   .dropdown-menu[data-bs-popper] {
     top: 0;
@@ -142,6 +143,13 @@
   }
 }
 
+.dropend-manual {
+  @include caret(end);
+  &::after {
+    vertical-align: 0;
+  }
+}
+
 .dropstart {
   .dropdown-menu[data-bs-popper] {
     top: 0;
@@ -156,6 +164,13 @@
     &::before {
       vertical-align: 0;
     }
+  }
+}
+
+.dropstart-manual {
+  @include caret(start);
+  &::before {
+    vertical-align: 0;
   }
 }
 
