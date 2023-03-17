@@ -28,7 +28,7 @@ jobs:
                   git fetch --all
                   git checkout -t origin/master
                   npm set //registry.npmjs.org/:_authToken $NPM_TOKEN
-                  copyfiles -f README.md packages/custom-tauri-titlebar/
+                  cp README.md packages/custom-tauri-titlebar/
                   lerna publish $VERSION --yes --no-git-tag-version
               env:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
