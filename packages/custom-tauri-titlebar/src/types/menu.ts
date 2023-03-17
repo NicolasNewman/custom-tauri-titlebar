@@ -5,7 +5,8 @@ export type MenuItem =
 			action: () => void;
 			shortcut?: string;
 	  }
-	| { type: 'divider' };
+	| { type: 'divider' }
+	| { type: 'submenu'; submenu: Menu };
 
 export type Menu = { label: string; items: MenuItem[] };
 

@@ -49,23 +49,17 @@ export default class Titlebar {
 		return `${this.options.className}-${name}`;
 	}
 
-	addMenu(menu: Menu, position: Position = 'start') {
-		// const container = document.createElement('div');
-		// container.className = 'dropdown-container';
-
-		const dropdown = document.createElement('div');
-		dropdown.className = 'dropdown';
-
+	private createDropdownButton(label: string, ariaLabel: string) {
 		const button = document.createElement('div');
-		button.className = this.subclass('menu');
-		// button.type = 'button';
+		button.id = ariaLabel;
 		button.setAttribute('data-bs-toggle', 'dropdown');
+		button.setAttribute('data-bs-auto-close', 'outside');
 		button.setAttribute('aria-expanded', 'false');
-		button.innerText = menu.label;
+		button.innerText = label;
+		return button;
+	}
 
-		const ul = document.createElement('ul');
-		ul.className = 'dropdown-menu';
-
+	private createDropdown(parent: Element, menu: Menu, position: Position, counter = 0) {
 		for (const item of menu.items) {
 			const li = document.createElement('li');
 			if (item.type === 'item') {
@@ -77,9 +71,67 @@ export default class Titlebar {
 				const hr = document.createElement('hr');
 				hr.className = 'dropdown-divider';
 				li.insertAdjacentElement('afterbegin', hr);
+			} else if (item.type === 'submenu') {
+				const positionClassName = position === 'start' ? 'dropend' : position === 'end' ? 'dropstart' : '';
+				const ariaLabel = `${item.submenu.label}-submenu-${counter}`;
+				li.className = positionClassName;
+
+				const button = this.createDropdownButton(item.submenu.label, ariaLabel);
+				button.className = 'dropdown-item';
+				button.innerHTML = `
+				<span style="display: flex; justify-content: space-between;">
+					<span>${button.innerText}</span>
+					<span class="${positionClassName === '' ? 'dropend' : positionClassName}-manual"></span>
+				</span>
+				`;
+
+				const ul = document.createElement('ul');
+				ul.className = 'dropdown-menu';
+				ul.setAttribute('aria-labelledby', ariaLabel);
+
+				li.insertAdjacentElement('afterbegin', button);
+				li.insertAdjacentElement('beforeend', ul);
+				this.createDropdown(ul, item.submenu, position, ++counter);
 			}
-			ul.insertAdjacentElement('beforeend', li);
+			parent.insertAdjacentElement('beforeend', li);
 		}
+	}
+
+	/**
+	 * Insert a div containing a dropdown menu into the titlebar
+	 * @param menu - Object containing the structure of the menu
+	 * @param {Position} [position = start] - Position to insert the menu at. Defaults to "start" if unspecified.
+	 * @example
+	 * // Simple menu with a divider at the default position
+	 * titlebar.addMenu({
+	 * 	label: 'File',
+	 * 	items: [
+	 * 		{
+	 * 			type: 'item',
+	 * 			label: 'Open',
+	 * 			action: () => { open() }
+	 * 		},
+	 * 		{ type: 'divider' }
+	 * 		{
+	 * 			type: 'item',
+	 * 			label: 'Save',
+	 * 			action: () => { save() }
+	 * 		}
+	 * 	]
+	 * })
+	 */
+	addMenu(menu: Menu, position: Position = 'start') {
+		const dropdown = document.createElement('div');
+		dropdown.className = 'dropdown';
+
+		const ariaLabel = `${menu.label}-menu`;
+		const button = this.createDropdownButton(menu.label, ariaLabel);
+		button.className = this.subclass('menu');
+
+		const ul = document.createElement('ul');
+		ul.className = 'dropdown-menu';
+		ul.setAttribute('aria-labelledby', ariaLabel);
+		this.createDropdown(ul, menu, position);
 
 		dropdown.insertAdjacentElement('afterbegin', button);
 		dropdown.insertAdjacentElement('beforeend', ul);
