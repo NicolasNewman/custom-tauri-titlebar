@@ -1,8 +1,7 @@
 {
 	"name": "eslint-config-custom-tauri-titlebar",
 	"version": "0.0.1",
-	"private": true,
-	"description": "",
+	"description": "ESLint config settings for custom-tauri-titlebar",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

@@ -1,8 +1,7 @@
 {
-  "name": "bootstrap",
-  "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "5.2.3",
-  "private": true,
+  "name": "custom-tauri-titlebar-bootstrap",
+  "description": "Modified version of Bootstrap 5 which contains the bare-minimum needed for custom-tauri-titlebar.",
+  "version": "1.0.0",
   "keywords": [
     "css",
     "sass",
@@ -15,7 +14,8 @@
   "homepage": "https://getbootstrap.com/",
   "author": "The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)",
   "contributors": [
-    "Twitter, Inc."
+    "Twitter, Inc.",
+    "Nicolas Newman"
   ],
   "license": "MIT",
   "repository": {
@@ -58,11 +58,13 @@
     "js-compile-bundle": "rollup --environment BUNDLE:true --config build/rollup.config.js --sourcemap",
     "js-compile-plugins": "node build/build-plugins.js",
     "js-lint": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives --ext .html,.js .",
+    "js-lint:fix": "eslint --cache --cache-location .cache/.eslintcache --report-unused-disable-directives --ext .html,.js .",
     "js-minify": "npm-run-all --aggregate-output --parallel js-minify-*",
     "js-minify-standalone": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.js.map,includeSources,url=bootstrap.min.js.map\" --output dist/js/bootstrap.min.js dist/js/bootstrap.js",
     "js-minify-standalone-esm": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.esm.js.map,includeSources,url=bootstrap.esm.min.js.map\" --output dist/js/bootstrap.esm.min.js dist/js/bootstrap.esm.js",
     "js-minify-bundle": "terser --compress passes=2 --mangle --comments \"/^!/\" --source-map \"content=dist/js/bootstrap.bundle.js.map,includeSources,url=bootstrap.bundle.min.js.map\" --output dist/js/bootstrap.bundle.min.js dist/js/bootstrap.bundle.js",
     "lint": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint css-lint",
+    "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel js-lint:fix css-lint",
     "build": "npm-run-all --aggregate-output --parallel css js",
     "prepare": "npm run build",
     "test": "npm-run-all lint dist js-test docs-build docs-lint",

@@ -29,6 +29,6 @@
 	},
 	"gitHead": "6cd6680f726df572868618b1a57d8a26476a477c",
 	"dependencies": {
-		"bootstrap": "workspace:*"
+		"custom-tauri-titlebar-bootstrap": "workspace:*"
 	}
 }

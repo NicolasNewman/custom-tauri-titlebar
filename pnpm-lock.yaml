@@ -14,7 +14,20 @@ importers:
       husky: 8.0.3
       lerna: 6.5.1
 
-  packages/bootstrap:
+  packages/custom-tauri-titlebar:
+    specifiers:
+      custom-tauri-titlebar-bootstrap: workspace:*
+      eslint-config-custom-tauri-titlebar: workspace:*
+      nodemon: ^2.0.21
+      typescript: ^4.9.5
+    dependencies:
+      custom-tauri-titlebar-bootstrap: link:../custom-tauri-titlebar-bootstrap
+    devDependencies:
+      eslint-config-custom-tauri-titlebar: link:../eslint-config-custom-tauri-titlebar
+      nodemon: 2.0.21
+      typescript: 4.9.5
+
+  packages/custom-tauri-titlebar-bootstrap:
     specifiers:
       '@babel/cli': ^7.19.3
       '@babel/core': ^7.19.3
@@ -82,19 +95,6 @@ importers:
       stylelint: 14.16.1
       stylelint-config-twbs-bootstrap: 6.0.0_w5gtdy6oq4ictd5o4eu6befejy
       terser: 5.16.6
-      typescript: 4.9.5
-
-  packages/custom-tauri-titlebar:
-    specifiers:
-      bootstrap: workspace:*
-      eslint-config-custom-tauri-titlebar: workspace:*
-      nodemon: ^2.0.21
-      typescript: ^4.9.5
-    dependencies:
-      bootstrap: link:../bootstrap
-    devDependencies:
-      eslint-config-custom-tauri-titlebar: link:../eslint-config-custom-tauri-titlebar
-      nodemon: 2.0.21
       typescript: 4.9.5
 
   packages/eslint-config-custom-tauri-titlebar:

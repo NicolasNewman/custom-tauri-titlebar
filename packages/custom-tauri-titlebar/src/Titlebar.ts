@@ -1,7 +1,7 @@
 import { InnerData, Position, TitleBarOptions, TitleBarOptionsDefault } from './types/titlebar';
 import { Menu } from './types/menu';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'custom-tauri-titlebar-bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'custom-tauri-titlebar-bootstrap/dist/css/bootstrap.min.css';
 import { styleGen } from './lib/styleGen';
 
 export default class Titlebar {
