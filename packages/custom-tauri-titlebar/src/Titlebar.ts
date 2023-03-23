@@ -27,8 +27,12 @@ export default class Titlebar {
 
 		const titlebar = document.createElement('div');
 		titlebar.className = this.options.className;
+		titlebar.id = 'custom-tauri-titlebar';
 		titlebar.setAttribute('data-tauri-drag-region', '');
-		document.body.insertAdjacentElement('afterbegin', titlebar);
+		// prevent duplicate titlebars from being inserted into the DOM
+		if (!document.getElementById('custom-tauri-titlebar')) {
+			document.body.insertAdjacentElement('afterbegin', titlebar);
+		}
 
 		this.start = document.createElement('div');
 		this.start.className = this.subclass('section');
