@@ -19,8 +19,11 @@ Inside of _tauri.conf.json_, make sure the following properties are set:
     "allowList": {
         "window": {
             "startDragging": true, # if "window.all" is false
+        },
+        "globalShortcut": {
+            "all": true # if shortcuts are used
         }
-    }
+    },
     "windows": [
         {
             "decorations": false,
