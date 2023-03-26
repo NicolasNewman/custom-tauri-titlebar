@@ -12,7 +12,6 @@ export default class Titlebar {
 	private middle: Element;
 	private end: Element;
 	private slots: { [key in Position]: Element };
-	// private handlerMap: { [key in number]: { [key in string]?: () => void } };
 
 	/**
 	 * Constructor to handle initialization of the Titlebar. This includes insertion of the Titlebar to the begining of the \<body \/\> and the styles at the end of the \<head\/\>
@@ -32,25 +31,11 @@ export default class Titlebar {
 		titlebar.className = this.options.className;
 		titlebar.id = 'custom-tauri-titlebar';
 		titlebar.setAttribute('data-tauri-drag-region', '');
+
 		// prevent duplicate titlebars from being inserted into the DOM
 		if (!document.getElementById('custom-tauri-titlebar')) {
 			document.body.insertAdjacentElement('afterbegin', titlebar);
 		}
-
-		// this.handlerMap = {};
-		// document.body.addEventListener('keyup', (e) => {
-		// 	const { key, ctrlKey, shiftKey, altKey } = e;
-
-		// 	if (key === 'Control' || key === 'Shift' || key === 'Alt') {
-		// 		return;
-		// 	}
-
-		// 	const code = makeModifierCode({ ctrl: ctrlKey, shift: shiftKey, alt: altKey });
-		// 	if (code > 0) {
-		// 		const action = this.handlerMap[code][key];
-		// 		action?.();
-		// 	}
-		// });
 
 		this.start = document.createElement('div');
 		this.start.className = this.subclass('section');
