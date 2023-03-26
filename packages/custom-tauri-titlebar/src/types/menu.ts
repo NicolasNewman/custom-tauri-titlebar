@@ -1,9 +1,11 @@
+import { Shortcut } from './keys';
+
 export type MenuItem =
 	| {
 			type: 'item';
 			label: string;
 			action: () => void;
-			shortcut?: string;
+			shortcut?: Shortcut;
 	  }
 	| { type: 'divider' }
 	| { type: 'submenu'; submenu: Menu };

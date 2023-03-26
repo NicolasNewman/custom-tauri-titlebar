@@ -25,10 +25,14 @@
 	"devDependencies": {
 		"eslint-config-custom-tauri-titlebar": "workspace:*",
 		"nodemon": "^2.0.21",
-		"typescript": "^4.9.5"
+		"typescript": "^4.9.5",
+		"@tauri-apps/api": "^1.0.0"
 	},
 	"gitHead": "6cd6680f726df572868618b1a57d8a26476a477c",
 	"dependencies": {
 		"custom-tauri-titlebar-bootstrap": "workspace:*"
+	},
+	"peerDependencies": {
+		"@tauri-apps/api": "^1.0.0"
 	}
 }

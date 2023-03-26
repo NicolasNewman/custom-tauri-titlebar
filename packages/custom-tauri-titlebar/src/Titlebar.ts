@@ -3,6 +3,8 @@ import { Menu } from './types/menu';
 import 'custom-tauri-titlebar-bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'custom-tauri-titlebar-bootstrap/dist/css/bootstrap.min.css';
 import { styleGen } from './lib/styleGen';
+import { getShortcutTrigger } from './types/keys';
+import { register } from '@tauri-apps/api/globalShortcut';
 
 export default class Titlebar {
 	private options: TitleBarOptions;
@@ -10,6 +12,7 @@ export default class Titlebar {
 	private middle: Element;
 	private end: Element;
 	private slots: { [key in Position]: Element };
+	// private handlerMap: { [key in number]: { [key in string]?: () => void } };
 
 	/**
 	 * Constructor to handle initialization of the Titlebar. This includes insertion of the Titlebar to the begining of the \<body \/\> and the styles at the end of the \<head\/\>
@@ -33,6 +36,21 @@ export default class Titlebar {
 		if (!document.getElementById('custom-tauri-titlebar')) {
 			document.body.insertAdjacentElement('afterbegin', titlebar);
 		}
+
+		// this.handlerMap = {};
+		// document.body.addEventListener('keyup', (e) => {
+		// 	const { key, ctrlKey, shiftKey, altKey } = e;
+
+		// 	if (key === 'Control' || key === 'Shift' || key === 'Alt') {
+		// 		return;
+		// 	}
+
+		// 	const code = makeModifierCode({ ctrl: ctrlKey, shift: shiftKey, alt: altKey });
+		// 	if (code > 0) {
+		// 		const action = this.handlerMap[code][key];
+		// 		action?.();
+		// 	}
+		// });
 
 		this.start = document.createElement('div');
 		this.start.className = this.subclass('section');
@@ -64,14 +82,21 @@ export default class Titlebar {
 		return button;
 	}
 
-	private createDropdown(parent: Element, menu: Menu, position: Position, counter = 0) {
+	private async createDropdown(parent: Element, menu: Menu, position: Position, counter = 0) {
 		for (const item of menu.items) {
 			const li = document.createElement('li');
 			if (item.type === 'item') {
 				const a = document.createElement('a');
 				a.className = 'dropdown-item';
 				a.innerText = item.label;
+				a.addEventListener('click', item.action);
+
 				li.insertAdjacentElement('afterbegin', a);
+
+				if (item.shortcut) {
+					const shortcut = getShortcutTrigger(item.shortcut);
+					await register(shortcut, item.action);
+				}
 			} else if (item.type === 'divider') {
 				const hr = document.createElement('hr');
 				hr.className = 'dropdown-divider';
@@ -104,6 +129,7 @@ export default class Titlebar {
 
 	/**
 	 * Insert a div containing a dropdown menu into the titlebar
+	 * @async
 	 * @param menu - Object containing the structure of the menu
 	 * @param {Position} [position = start] - Position to insert the menu at. Defaults to "start" if unspecified.
 	 * @example
@@ -125,7 +151,7 @@ export default class Titlebar {
 	 * 	]
 	 * })
 	 */
-	addMenu(menu: Menu, position: Position = 'start') {
+	async addMenu(menu: Menu, position: Position = 'start') {
 		const dropdown = document.createElement('div');
 		dropdown.className = 'dropdown';
 
@@ -136,7 +162,7 @@ export default class Titlebar {
 		const ul = document.createElement('ul');
 		ul.className = 'dropdown-menu';
 		ul.setAttribute('aria-labelledby', ariaLabel);
-		this.createDropdown(ul, menu, position);
+		await this.createDropdown(ul, menu, position);
 
 		dropdown.insertAdjacentElement('afterbegin', button);
 		dropdown.insertAdjacentElement('beforeend', ul);
