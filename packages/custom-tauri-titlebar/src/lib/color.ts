@@ -1,5 +1,6 @@
 /**
  * Lighten / Darkens a hex color code. Only works for 6 character hex codes!
+ * @private
  * @param color - hex color code to apply the function to
  * @param percent - positive/negative value between [-1,1] to lighten/darken color
  * @returns lightened/darkened hex code of the input color
