@@ -174,6 +174,7 @@ export default class Titlebar {
 	addIcon(inner: InnerData, position: Position = 'start') {
 		const div = document.createElement('div');
 		div.className = this.subclass('icon');
+		div.setAttribute('data-tauri-drag-region', '');
 
 		if (inner.type === 'src') {
 			const icon = document.createElement('img');
@@ -203,6 +204,7 @@ export default class Titlebar {
 		const div = document.createElement('div');
 		div.className = this.subclass('title');
 		div.textContent = text;
+		div.setAttribute('data-tauri-drag-region', '');
 		this.slots[position].insertAdjacentElement('beforeend', div);
 	}
 
