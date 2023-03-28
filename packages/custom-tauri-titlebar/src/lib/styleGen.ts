@@ -29,12 +29,22 @@ export function styleGen(config: TitleBarOptions) {
 	}`;
 
 	/*========================================*
+	 *             Title Styles               *
+	 *========================================*/
+	const titleStyles = `
+	.${config.className}-title {
+		cursor: none;
+	}
+	`;
+
+	/*========================================*
 	 *             Icon Styles                *
 	 *========================================*/
 	const iconStyles = `
     .${config.className}-icon {
         height: ${config.height}px;
         width: ${config.height}px;
+		cursor: none;
     }
 
     .${config.className}-icon img {
@@ -89,6 +99,7 @@ export function styleGen(config: TitleBarOptions) {
 	return `
     <style>
     ${titlebarStyles}
+	${titleStyles}
     ${sectionStyles}
     ${iconStyles}
     ${sharedButtonStyles}
