@@ -15,21 +15,11 @@ npm i custom-tauri-titlebar
 Inside of _tauri.conf.json_, make sure the following properties are set:
 
 ```yaml
-"tauri": {
-    "allowList": {
-        "window": {
-            "startDragging": true, # if "window.all" is false
-        },
-        "globalShortcut": {
-            "all": true # if shortcuts are used
-        }
-    },
-    "windows": [
-        {
-            "decorations": false,
-        }
-    ]
-}
+'tauri': { 'allowList': { 'window': {
+                        'startDragging': true, # if "window.all" is false
+                    }, 'globalShortcut': {
+                        'all': true, # if shortcuts are used
+                    } }, 'windows': [{ 'decorations': false }] }
 ```
 
 ## Usage
@@ -61,3 +51,11 @@ Assuming the default class name is used, the following class names can be used t
 ```
 
 If a higher specificity is needed to overwrite default properties, the selector `.{className} .{className}-{component}` can be used.
+
+Additionally, the following utility classes are provided:
+
+```css
+.titlebar-vh {
+	height: calc(100vh - {titlebar.height}px);
+} /* Sets the height to the viewport height minus the height of the titlebar (provided on initialization)*/
+```

@@ -96,6 +96,15 @@ export function styleGen(config: TitleBarOptions) {
     }
     `;
 
+	/*========================================*
+	 *              Util Classes              *
+	 *========================================*/
+	const util = `
+	.${config.className}-vh {
+		height: calc(100vh - ${config.height}px);
+	} 
+	`;
+
 	return `
     <style>
     ${titlebarStyles}
@@ -106,5 +115,6 @@ export function styleGen(config: TitleBarOptions) {
     ${buttonStyles}
     ${menuStyles}
     ${bootstrapOverride}
+	${util}
     </style>`;
 }
