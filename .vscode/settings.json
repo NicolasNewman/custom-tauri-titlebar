@@ -6,5 +6,8 @@
 	"stylelint.validate": ["css", "less", "postcss", "scss"],
 	"[scss]": {
 		"editor.defaultFormatter": "stylelint.vscode-stylelint"
+	},
+	"[markdown]": {
+		"editor.formatOnSave": false
 	}
 }
