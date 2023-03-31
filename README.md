@@ -15,11 +15,21 @@ npm i custom-tauri-titlebar
 Inside of _tauri.conf.json_, make sure the following properties are set:
 
 ```yaml
-'tauri': { 'allowList': { 'window': {
-                        'startDragging': true, # if "window.all" is false
-                    }, 'globalShortcut': {
-                        'all': true, # if shortcuts are used
-                    } }, 'windows': [{ 'decorations': false }] }
+"tauri": {
+    "allowList": {
+        "window": {
+            "startDragging": true, # if "window.all" is false
+        },
+        "globalShortcut": {
+            "all": true # if shortcuts are used
+        }
+    },
+    "windows": [
+        {
+            "decorations": false,
+        }
+    ]
+}
 ```
 
 ## Usage
@@ -59,3 +69,4 @@ Additionally, the following utility classes are provided:
 	height: calc(100vh - {titlebar.height}px);
 } /* Sets the height to the viewport height minus the height of the titlebar (provided on initialization)*/
 ```
+
