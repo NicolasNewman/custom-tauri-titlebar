@@ -18,7 +18,7 @@ export const TitleBarOptionsDefault: TitleBarOptions = {
 	height: 30,
 	theme: {
 		bgPrimary: '#c0c0c0',
-		bgSecondary: '#fffffff',
+		bgSecondary: '#ffffff',
 		fontPrimary: '#191919',
 		fontSecondary: '#000000',
 	},
