@@ -94,6 +94,13 @@ export function styleGen(config: TitleBarOptions) {
     .${config.className} div.dropdown {
         padding: 0 8px;
     }
+	.${config.className} ul.dropdown-menu {
+		background: ${config.theme.bgSecondary};
+	}
+	
+	.${config.className} .dropdown-item {
+		color: ${config.theme.fontSecondary};
+	}
     `;
 
 	/*========================================*
