@@ -102,6 +102,14 @@ export function styleGen(config: TitleBarOptions) {
 	.${config.className} .dropdown-item {
 		color: ${config.theme.fontSecondary};
 	}
+
+	.${config.className} .dropdown-item:focus,
+	.${config.className} .dropdown-item:hover {
+		background: ${lighten(config.theme.bgSecondary, -0.1)};
+	}
+	
+	.${config.className} .dropdown-item:active {
+		background: ${lighten(config.theme.bgSecondary, 0.1)};
     `;
 
 	/*========================================*
