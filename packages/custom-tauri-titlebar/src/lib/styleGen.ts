@@ -26,6 +26,18 @@ export function styleGen(config: TitleBarOptions) {
     .${config.className}-section {
 		display: flex;
 		align-items: center;
+		width: 33%;
+	}
+
+	.${config.className}-section:nth-of-type(1) {
+		justify-content: start;
+	}
+	.${config.className}-section:nth-of-type(2) {
+		justify-content: center;
+	}
+	.${config.className}-section:nth-of-type(3) {
+		justify-content: end;
+		flex-direction: row-reverse;
 	}`;
 
 	/*========================================*
