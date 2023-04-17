@@ -93,6 +93,7 @@ export function styleGen(config: TitleBarOptions) {
 	const bootstrapOverride = `
     .${config.className} div.dropdown {
         padding: 0 8px;
+		cursor: pointer;
     }
 	.${config.className} ul.dropdown-menu {
 		background: ${config.theme.bgSecondary};

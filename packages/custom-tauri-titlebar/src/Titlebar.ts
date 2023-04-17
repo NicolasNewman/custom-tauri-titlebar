@@ -63,7 +63,6 @@ export default class Titlebar {
 		button.setAttribute('data-bs-toggle', 'dropdown');
 		button.setAttribute('data-bs-auto-close', 'outside');
 		button.setAttribute('aria-expanded', 'false');
-		button.setAttribute('data-tauri-drag-region', '');
 		button.innerText = label;
 		return button;
 	}
