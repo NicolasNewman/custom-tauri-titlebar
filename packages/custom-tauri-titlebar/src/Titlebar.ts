@@ -38,16 +38,17 @@ export default class Titlebar {
 		}
 
 		this.start = document.createElement('div');
-		this.start.className = this.subclass('section');
 		this.middle = document.createElement('div');
-		this.middle.className = this.subclass('section');
 		this.end = document.createElement('div');
-		this.end.className = this.subclass('section');
 		this.slots = {
 			start: this.start,
 			middle: this.middle,
 			end: this.end,
 		};
+		for (const [, value] of Object.entries(this.slots)) {
+			value.className = this.subclass('section');
+			value.setAttribute('data-tauri-drag-region', '');
+		}
 		titlebar.insertAdjacentElement('afterbegin', this.end);
 		titlebar.insertAdjacentElement('afterbegin', this.middle);
 		titlebar.insertAdjacentElement('afterbegin', this.start);
