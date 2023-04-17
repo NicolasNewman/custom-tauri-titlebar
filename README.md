@@ -1,5 +1,10 @@
 # custom-tauri-titlebar
 
+![NPM](https://img.shields.io/npm/l/custom-tauri-titlebar)
+![npm](https://img.shields.io/npm/v/custom-tauri-titlebar)
+![npm bundle size](https://img.shields.io/bundlephobia/min/custom-tauri-titlebar)
+![npm](https://img.shields.io/npm/dm/custom-tauri-titlebar)
+
 **THIS PACKAGE IS CURRENTLY IN ALPHA DEVELOPMENT**
 
 Hassle-free custom titlebars for any Tauri application.
