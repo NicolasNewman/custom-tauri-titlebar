@@ -13,7 +13,7 @@ jobs:
             - uses: fregante/setup-git-user@v1
             - uses: pnpm/action-setup@v2
               with:
-                  version: 7
+                  version: 8
             - name: Use Node.js v18
               uses: actions/setup-node@v3
               with:
