@@ -34,6 +34,7 @@
 		"custom-tauri-titlebar-bootstrap": "workspace:*"
 	},
 	"peerDependencies": {
-		"@tauri-apps/api": "^2.5.0"
+		"@tauri-apps/api": "^2.5.0",
+		"@tauri-apps/plugin-global-shortcut": "^2.2.0"
 	}
 }
