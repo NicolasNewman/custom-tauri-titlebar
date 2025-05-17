@@ -4,7 +4,7 @@ import 'custom-tauri-titlebar-bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'custom-tauri-titlebar-bootstrap/dist/css/bootstrap.min.css';
 import { styleGen } from './lib/styleGen';
 import { getShortcutTrigger } from './types/keys';
-import { register } from '@tauri-apps/api/globalShortcut';
+import { register } from '@tauri-apps/plugin-global-shortcut';
 
 export default class Titlebar {
 	private options: TitleBarOptions;

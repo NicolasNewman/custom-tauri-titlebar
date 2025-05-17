@@ -47,7 +47,6 @@ export function styleGen(config: TitleBarOptions) {
     .${config.className}-icon {
         height: ${config.height}px;
         width: ${config.height}px;
-		cursor: none;
     }
 
     .${config.className}-icon img {
