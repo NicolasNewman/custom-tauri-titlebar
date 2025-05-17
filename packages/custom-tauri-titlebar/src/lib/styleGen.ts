@@ -47,6 +47,9 @@ export function styleGen(config: TitleBarOptions) {
     .${config.className}-icon {
         height: ${config.height}px;
         width: ${config.height}px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
     }
 
     .${config.className}-icon img {
@@ -55,6 +58,14 @@ export function styleGen(config: TitleBarOptions) {
         padding: 3px;
     }
     `;
+
+	/*========================================*
+	 *           Title Styles           *
+	 *========================================*/
+	const titleStyles = `
+	.${config.className}-title {
+		cursor: default;
+	}`;
 
 	/*========================================*
 	 *           Menu/Button Styles           *
@@ -67,6 +78,7 @@ export function styleGen(config: TitleBarOptions) {
 		justify-content: center;
 		align-items: center;
 		height: ${config.height}px;
+		cursor: default;
 	}
     
     .${config.className}-button:hover,
@@ -127,6 +139,7 @@ export function styleGen(config: TitleBarOptions) {
     <style>
     ${titlebarStyles}
     ${sectionStyles}
+	${titleStyles}
     ${iconStyles}
     ${sharedButtonStyles}
     ${buttonStyles}
